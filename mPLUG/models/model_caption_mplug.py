@@ -26,7 +26,7 @@ class MPLUG(nn.Module):
         self.beam_generator = TextGenerator(config, self.text_decoder) 
             
         
-    def forward(self, image, question, answer=None, train=True, out_size=5, scst=False):
+    def forward(self, image, question=None, answer=None, train=True, out_size=5, scst=False):
         if(scst):
             return self.beam_search(image, question, answer, train=True,out_size=out_size)
         image = image.to(dtype=next(self.parameters()).dtype) 
